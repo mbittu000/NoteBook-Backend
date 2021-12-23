@@ -1,0 +1,15 @@
+const express=require('express')
+const mongo=require('./db')
+const cors=require('cors')
+const app=express()
+let port=process.env.PORT || 4001
+app.use(express.json())
+app.use(cors())
+mongo()
+app.use(cors())
+app.use('/set',require('./route/set'))
+app.use('/get',require('./route/get'))
+app.use('/rm',require('./route/up'))
+app.use('/find',require('./route/find'))
+
+app.listen(port)
